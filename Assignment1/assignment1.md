@@ -12,6 +12,7 @@ The following attributes are dimensions:
 - location
 
 **1.1 Draw a conceptual star schema for this cube.**
+
 ![Star Diagram](star2.png)
 
 **1.2 Which attributes are the facts; which attributes are the dimensions?**
