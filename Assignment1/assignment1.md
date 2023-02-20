@@ -22,6 +22,10 @@ The following attributes are facts:
 
 The following attributes are dimensions:
 - instID
+- institute
+- cityID
+- city
+- province
 - study
 - phase
 - year
