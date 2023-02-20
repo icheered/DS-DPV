@@ -1,0 +1,108 @@
+customerid,Customer Name,Province,Region,Customer Segment
+1,Luke Weiss,British Columbia,West,Corporate
+2,Monica Federle,British Columbia,West,Corporate
+3,Kimberly Carter,British Columbia,West,Home Office
+4,Sanjit Chand,British Columbia,West,Home Office
+5,Christina DeMoss,British Columbia,West,Home Office
+6,Anthony O'Donnell,British Columbia,West,Consumer
+7,Sonia Sunley,British Columbia,West,Small Business
+8,Kelly Williams,British Columbia,West,Corporate
+9,Sarah Foster,British Columbia,West,Corporate
+10,Barbara Fisher,British Columbia,West,Small Business
+11,Dennis Bolton,British Columbia,West,Small Business
+12,Roy Skaria,British Columbia,West,Corporate
+13,Marc Harrigan,British Columbia,West,Home Office
+14,Lela Donovan,British Columbia,West,Corporate
+15,Ralph Kennedy,British Columbia,West,Corporate
+16,Khloe Miller,British Columbia,West,Home Office
+17,Kristina Nunn,British Columbia,West,Consumer
+18,Liz Price,British Columbia,West,Corporate
+19,Tony Chapman,British Columbia,West,Consumer
+20,Neil Knudson,British Columbia,West,Corporate
+21,Shahid Hopkins,British Columbia,West,Small Business
+22,Bill Eplett,British Columbia,West,Corporate
+23,John Grady,British Columbia,West,Corporate
+24,Jay Fine,British Columbia,West,Consumer
+25,Dave Poirier,British Columbia,West,Small Business
+26,Bryan Spruell,British Columbia,West,Home Office
+27,Grant Thornton,British Columbia,West,Corporate
+28,Jeremy Pistek,British Columbia,West,Corporate
+29,Jill Matthias,British Columbia,West,Consumer
+30,Nora Paige,British Columbia,West,Small Business
+31,Aaron Hawkins,British Columbia,West,Home Office
+32,Alejandro Savely,British Columbia,West,Corporate
+33,Brad Thomas,British Columbia,West,Home Office
+34,Victoria Pisteka,British Columbia,West,Corporate
+35,Roland Fjeld,British Columbia,West,Corporate
+36,Denny Ordway,British Columbia,West,Small Business
+37,Natalie Webber,British Columbia,West,Corporate
+38,Brad Thomas,British Columbia,West,Corporate
+39,Charles Crestani,British Columbia,West,Consumer
+40,Bobby Trafton,British Columbia,West,Corporate
+41,Damala Kotsonis,British Columbia,West,Corporate
+42,Eugene Moren,British Columbia,West,Home Office
+43,Art Miller,British Columbia,West,Corporate
+44,Art Foster,British Columbia,West,Home Office
+45,Fred Harton,British Columbia,West,Home Office
+46,Barry Blumstein,British Columbia,West,Small Business
+47,Scott Cohen,British Columbia,West,Consumer
+48,Carol Darley,British Columbia,West,Home Office
+49,Carol Darley,British Columbia,West,Small Business
+50,Ken Lonsdale,British Columbia,West,Consumer
+51,Duane Noonan,British Columbia,West,Corporate
+52,Eva Jacobs,British Columbia,West,Home Office
+53,Tim Brockman,Alberta,West,Consumer
+54,Resi Polking,Alberta,West,Small Business
+55,Sung Pak,Alberta,West,Small Business
+56,Tamara Manning,Alberta,West,Corporate
+57,Roger Demir,Alberta,West,Consumer
+58,Ricardo Block,Alberta,West,Corporate
+59,John Murray,Alberta,West,Small Business
+60,Shaun Chance,Alberta,West,Corporate
+61,Tom Prescott,Alberta,West,Small Business
+62,Darren Powers,Alberta,West,Corporate
+63,Adam Bellavance,Alberta,West,Small Business
+64,Ken Dana,Alberta,West,Small Business
+65,Julia Dunbar,Alberta,West,Consumer
+66,Helen Wasserman,Alberta,West,Home Office
+67,Mitch Gastineau,Alberta,West,Corporate
+68,Quincy Jones,Alberta,West,Corporate
+69,Katharine Harms,Alberta,West,Consumer
+70,Harold Dahlen,Alberta,West,Corporate
+71,Maria Zettner,Alberta,West,Corporate
+72,Clytie Kelty,Alberta,West,Small Business
+73,Brooke Gillingham,Alberta,West,Small Business
+74,Alex Russell,Alberta,West,Home Office
+75,Trudy Bell,Alberta,West,Consumer
+76,Sonia Cooley,Alberta,West,Corporate
+77,Becky Pak,Alberta,West,Corporate
+78,Adrian Barton,Alberta,West,Small Business
+79,Sibella Parks,Alberta,West,Small Business
+80,Cassandra Brandow,Alberta,West,Home Office
+81,Cari Sayre,Alberta,West,Corporate
+82,Craig Leslie,Alberta,West,Consumer
+83,Larry Tron,Alberta,West,Home Office
+84,Alice McCarthy,Alberta,West,Corporate
+85,Brian DeCherney,Alberta,West,Corporate
+86,Cari Sayre,Alberta,West,Home Office
+87,Larry Tron,Alberta,West,Corporate
+88,Annie Thurman,Alberta,West,Consumer
+89,Emily Grady,Alberta,West,Home Office
+90,Harold Pawlan,Alberta,West,Small Business
+91,Frank Merwin,Alberta,West,Corporate
+92,Craig Carroll,Alberta,West,Corporate
+93,Tony Sayre,Alberta,West,Home Office
+94,Ruben Dartt,Alberta,West,Corporate
+95,Brendan Sweed,Alberta,West,Consumer
+96,Stephanie Phelps,Alberta,West,Consumer
+97,Steven Roelle,Alberta,West,Small Business
+98,Frank Hawley,Alberta,West,Home Office
+99,Tony Sayre,Alberta,West,Small Business
+100,Raymond Book,Alberta,West,Consumer
+101,Tonja Turnell,Alberta,West,Consumer
+102,Roy Phan,Alberta,West,Corporate
+103,Aaron Bergman,Alberta,West,Corporate
+104,Christine Abelman,Alberta,West,Corporate
+105,Erica Smith,Alberta,West,Small Business
+106,Roy Phan,Alberta,West,Consumer
+107,Jessica Myrick,Alberta,West,Small Business
