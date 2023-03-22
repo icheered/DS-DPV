@@ -22,23 +22,37 @@ births['pari'] = ['primi' if parity == '1' else 'multi' for parity in births['pa
 births['etni'] = ['Dutch' if ethnicity == 'Dutch' else 'Not Dutch' for ethnicity in births['etnicity']]
 
 # (d) Create logistic regression model
-X = births[['pari', 'age_cat', 'etni', 'urban']]
-X = pd.get_dummies(X, columns=['pari', 'age_cat', 'etni', 'urban'])
+
+X = pd.get_dummies(births[['pari', 'age_cat', 'etni', 'urban']])
 Y = births['home']
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3)
-model = LogisticRegression(max_iter=1000)
-model.fit(X_train, Y_train)
-Y_pred = model.predict(X_test)
+model_lr = LogisticRegression(max_iter=1000)
+model_lr.fit(X_train, Y_train)
+Y_pred = model_lr.predict(X_test)
 print(classification_report(Y_test, Y_pred))
 
 # (e) Create decision tree model
-model_dt = DecisionTreeClassifier(max_depth=3, criterion='entropy')
+model_dt = DecisionTreeClassifier()
 model_dt.fit(X_train, Y_train)
-plot_tree(model_dt)
-plt.show()
+plot_tree(model_dt, fontsize=5)
 
-# (f) Compare models with cross validation
-scores_logreg = cross_val_score(model, X, Y, cv=10)
-scores_dt = cross_val_score(model_dt, X, Y, cv=10)
-print("Logistic Regression Accuracy: %0.2f (+/- %0.2f)" % (scores_logreg.mean(), scores_logreg.std() * 2))
-print("Decision Tree Accuracy: %0.2f (+/- %0.2f)" % (scores_dt.mean(), scores_dt.std() * 2))
+# # (f) Compare models with cross validation
+
+lr_scores = cross_val_score(model_lr, X, Y, cv=5)
+dt_scores = cross_val_score(model_dt, X, Y, cv=5)
+
+print("Logistic Regression Cross Validation Scores:")
+print(lr_scores)
+print(f"Mean: {np.mean(lr_scores)}\n")
+print("Decision Tree Cross Validation Scores:")
+print(dt_scores)
+print(f"Mean: {np.mean(dt_scores)}\n")
+
+# Compare models
+print()
+if np.mean(lr_scores) > np.mean(dt_scores):
+    print("Logistic Regression model fits the data better.")
+else:
+    print("Decision Tree model fits the data better.")
+
+plt.show()
