@@ -43,13 +43,13 @@ dt_scores = cross_val_score(model_dt, X, Y, cv=5)
 
 print("Logistic Regression Cross Validation Scores:")
 print(lr_scores)
-print(f"Mean: {np.mean(lr_scores)}\n")
+print(f"Mean Logistic Regression score: {np.mean(lr_scores)}")
 print("Decision Tree Cross Validation Scores:")
 print(dt_scores)
-print(f"Mean: {np.mean(dt_scores)}\n")
+print(f"Mean Logistic Regression score: {np.mean(lr_scores)}")
 
 # Compare models
-print()
+print(f"Mean Logistic Regression score: {np.mean(lr_scores)}")
 if np.mean(lr_scores) > np.mean(dt_scores):
     print("Logistic Regression model fits the data better.")
 else:

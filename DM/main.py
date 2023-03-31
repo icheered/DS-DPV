@@ -1,31 +1,42 @@
-# Import required libraries
 import pandas as pd
 import seaborn as sns
-import statsmodels.formula.api as smf
 import matplotlib.pyplot as plt
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+from pyreadstat import read_sav
 
-# Load data from voorbeeld7_1.sav
-chol1 = pd.read_spss('voorbeeld7_1.sav')
+# Import the data
+data, meta = read_sav('voorbeeld7_1.sav')
+chol1 = pd.DataFrame(data)
 
-# (a) Scatter plot with regression line
+# Scatter plot with regression line
+plt.figure()
 sns.lmplot(x='leeftijd', y='chol', data=chol1, fit_reg=True)
+plt.title('Scatter plot of cholesterol and age')
+plt.subplots_adjust(top=0.9)
+plt.savefig('2_6_scatterplot.png')
 
-# (b) Linear model fit for chol and leeftijd
-fit1 = smf.ols(formula='chol ~ leeftijd', data=chol1).fit()
-print("\nFit1 summary:")
+# Fit the linear model
+fit1 = smf.ols('chol ~ leeftijd', data=chol1).fit()
+print("Summary of the linear model:")
 print(fit1.summary())
 
-# (c) Linear model fit for chol with leeftijd, bmi, sekse and alcohol
-fit2 = smf.ols(formula='chol ~ leeftijd + bmi + sekse + alcohol', data=chol1).fit()
-print("\nFit2 summary:")
+# Fit the second linear model
+fit2 = smf.ols('chol ~ leeftijd + bmi + sekse + alcohol', data=chol1).fit()
+print("Summary of the second linear model:")
 print(fit2.summary())
 
 # Determine significant factors from fit2
-print("\nSignificant factors:")
+print("\n// Significant factors (p < 0.05):")
 print(fit2.pvalues[fit2.pvalues < 0.05])
 
-# (d) Histogram of the residuals from fit2
-residuals = fit2.resid
-plt.hist(residuals, bins=20)
+# Add the residuals to the table
+chol1['residuals'] = fit2.resid
+plt.figure()
+# Plot a histogram of the residuals
+plt.hist(chol1['residuals'], bins='auto')
 plt.xlabel('Residuals')
-plt.show()
+plt.ylabel('Frequency')
+plt.title('Histogram of residuals')
+# plt.subplots_adjust(top=0.9)
+plt.savefig('2_6_histogram.png')

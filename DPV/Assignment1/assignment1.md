@@ -11,6 +11,19 @@ The following attributes are dimensions:
 - year
 - location
 
+The following attributes are facts:
+\begin{itemize}
+\item number of events
+\item total participants
+\end{itemize}
+
+
+The following attributes are dimensions:
+\begin{itemize}
+\item day of the week
+\item year
+\end{itemize}
+
 **1.1 Draw a conceptual star schema for this cube.**
 ![Star Diagram](star.png)
 
