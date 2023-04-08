@@ -45,10 +45,6 @@ activities['time_end'] = activities['time_end'].astype(str).apply(lambda x: x.st
 
 activities.to_csv('data/utwente/activities.csv', index=False)
 
-# For debugging purposes
-activities_sample = activities.head(100)
-activities.to_csv('data_sample/utwente/activities.csv', index=False)
-
 
 # Read and concatenate the teachers and course_teachers dataframes
 teachersdf = pd.concat([pd.read_csv(path + file, usecols=['Cursus', 'Cursusnaam', 'Collegejaar', 'Medewerker']) for file in teacherfiles])
@@ -67,7 +63,3 @@ teachers = teachers.rename(columns={
 })
 
 teachers.to_csv('data/utwente/teachers.csv', index=False)
-
-# For debugging purposes
-teachers_sample = teachers.head(100)
-teachers_sample.to_csv('data_sample/utwente/teachers.csv', index=False)
