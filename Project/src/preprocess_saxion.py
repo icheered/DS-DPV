@@ -37,3 +37,6 @@ activities['duration'] = (activities['time_end'] - activities['time_start']).dt.
 
 # Save the combined DataFrame as a Parquet file
 activities.to_parquet(outputpath+'activities.parquet', compression='snappy')
+
+activities_sample = activities.head(100)
+activities_sample.to_csv(outputpath+'activities_sample.csv', index=False)
