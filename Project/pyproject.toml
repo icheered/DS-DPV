@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 pandas = "^2.0.0"
 pandasql = "^0.7.3"
+pyarrow = "^11.0.0"
 
 
 [build-system]
