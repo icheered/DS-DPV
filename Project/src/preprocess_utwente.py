@@ -75,3 +75,9 @@ teachers = teachers.rename(columns={
 
 teachers.to_csv(outputpath+'teachers.csv', index=False)
 teachers.to_parquet(outputpath+'teachers.parquet', compression='snappy')
+
+teachers['course'] = teachers['course'].astype(str)
+activities['course'] = activities['course'].astype(str)
+
+final_merged_df = pd.merge(teachers, activities, on='course')
+final_merged_df.to_parquet(outputpath+'merged_data.parquet', compression='snappy')
