@@ -1,0 +1,22 @@
+How has the average class size changed over the years (2013-2016)?
+What is the distribution of class types (e.g., lectures, labs, tutorials) in each year?
+What is the average duration of each class type (lectures, labs, tutorials)?
+Which teachers have the highest and lowest average class sizes?
+Which courses have the most and least number of teachers assigned to them?
+Are there any significant variations in class durations within a specific course?
+Which rooms are most frequently used for classes, and which are least used?
+On which days of the week are there the most and least number of classes scheduled?
+What is the average number of classes per day for students and teachers?
+What are the most common start and end times for classes across the campus?
+Which courses have the highest and lowest student-to-teacher ratios?
+
+
+
+How has the average class size changed over the years (2013-2016)?
+
+1. Filter the Activities dataset by year (you may need to extract the year from the "date" column).
+2. Calculate the total number of students in each year by summing the "size" column.
+3. Calculate the total number of classes in each year by counting the number of activities.
+4. Divide the total number of students by the total number of classes for each year to get the average class size.
+
+

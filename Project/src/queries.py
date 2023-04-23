@@ -83,7 +83,7 @@ def get_room_occupancy(dataframe):
 def get_room_occupancy_info(dataframe):
     # Convert date column to datetime
     dataframe['date'] = pd.to_datetime(dataframe['date'])
-    
+
     # Calculate total room usage
     room_usage = dataframe.groupby('room')['duration'].sum().reset_index()
 
@@ -101,15 +101,21 @@ def get_room_occupancy_info(dataframe):
     room_info = pd.merge(room_usage, room_total_available_time, on='room')
     room_info['occupancy_percentage'] = (room_info['duration'] / room_info['available_time'] * 100).round(1)
 
-    # Calculate room usage variance
+    # Calculate room usage per day
     room_usage_by_day = dataframe.groupby(['room', 'date'])['duration'].sum().reset_index()
-    room_usage_variance = (room_usage_by_day.groupby('room')['duration'].var().reset_index()).round()
-    room_usage_variance.rename(columns={'duration': 'variance'}, inplace=True)
 
-    # Merge the two dataframes
-    room_info = pd.merge(room_info, room_usage_variance, on='room')
+    # Calculate average usage per day for each room
+    avg_usage_per_room = room_usage_by_day.groupby('room')['duration'].mean().reset_index()
+    avg_usage_per_room.rename(columns={'duration': 'avg_duration_per_day'}, inplace=True)
 
-    # Filter rooms with occupancy >= 70%
-    high_occupancy_rooms = room_info[room_info['occupancy_percentage'] >= 70]
+    # Calculate overall average usage per day
+    overall_avg_usage_per_day = room_usage_by_day['duration'].mean()
 
-    return high_occupancy_rooms, room_info
+    # Merge the dataframes
+    room_info = pd.merge(room_info, avg_usage_per_room, on='room')
+
+    # Filter rooms with above-average daily usage and less frequent usage
+    above_avg_daily_usage = room_info[room_info['avg_duration_per_day'] > overall_avg_usage_per_day]
+    less_frequent_high_usage_rooms = above_avg_daily_usage.sort_values(by='avg_duration_per_day', ascending=False)
+
+    return less_frequent_high_usage_rooms, room_info
