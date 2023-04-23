@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from ..utwente import WRITEMODE, TESTMODE
+from utwente import WRITEMODE, TESTMODE
 
 path = "../../data/utwente/"
 
@@ -52,4 +52,4 @@ def store_dataframe_to_csv(df, var_name):
     file_path = intermediate_output + var_name + '.csv'
     
     # write dataframe to csv
-    df.to_csv(file_path, index=False)
+    df.to_csv(file_path, index=True)

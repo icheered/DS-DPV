@@ -4,8 +4,8 @@ import utils.room as room
 import utils.class_size_type as class_size_type
 import utils.data as data
 
-TESTMODE = True     # Set to True to only load a subset of the data to speed things up
-WRITEMODE = False   # Set to True to write the output to disk
+TESTMODE = False     # Set to True to only load a subset of the data to speed things up
+WRITEMODE = True   # Set to True to write the output to disk
 
 def main():
     activities, teachers = data.load_data()

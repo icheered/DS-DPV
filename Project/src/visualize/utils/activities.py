@@ -32,12 +32,13 @@ def calculate_activity_distribution(activities: pd.DataFrame) -> pd.DataFrame:
 
 
 def plot_activity_distribution(activity_distribution: pd.DataFrame):
+    print(activity_distribution)
     activity_distribution.plot(figsize=(10, 6))
     plt.xlabel('Hour of the day')
     plt.ylabel('Percentage of active activities')
     plt.title('Activities Distribution by Hour and Year')
     plt.legend(title='Year')
-    plt.xlim(pd.to_datetime('07:00').time(), pd.to_datetime('22:30').time())
+    plt.xlim(pd.to_datetime('08:00').time(), pd.to_datetime('22:00').time())
     plt.grid()
     plt.show()
 
