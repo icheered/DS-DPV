@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
-
+import os
 
 def calculate_activity_distribution(activities: pd.DataFrame) -> pd.DataFrame:
     activities = activities.dropna(subset=['date'])
@@ -40,7 +40,19 @@ def plot_activity_distribution(activity_distribution: pd.DataFrame):
     plt.legend(title='Year')
     plt.xlim(pd.to_datetime('08:00').time(), pd.to_datetime('22:00').time())
     plt.grid()
-    plt.show()
+    # plt.show()
+
+    # Get the current working directory
+    cwd = os.getcwd()
+
+    # Create the output directory if it doesn't exist
+    output_dir = os.path.join(cwd, 'output')
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Set the output file path and save the figure
+    output_file = os.path.join(output_dir, 'activity_distribution.png')
+    plt.savefig(output_file, dpi=300)  # Save the image to the specified file
 
 
 
@@ -77,4 +89,16 @@ def plot_activity_distribution_by_day(activity_distribution: pd.DataFrame):
     plt.title('Activities Distribution by Day of the Week and Year')
     plt.legend(title='Year')
     plt.grid()
-    plt.show()
+    # plt.show()
+
+    # Get the current working directory
+    cwd = os.getcwd()
+
+    # Create the output directory if it doesn't exist
+    output_dir = os.path.join(cwd, 'output')
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Set the output file path and save the figure
+    output_file = os.path.join(output_dir, 'activity_distribution_days.png')
+    plt.savefig(output_file, dpi=300)  # Save the image to the specified file
