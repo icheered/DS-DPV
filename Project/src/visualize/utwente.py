@@ -3,7 +3,7 @@ import utils.utwente_utils as utils
 import matplotlib.pyplot as plt
 
 def main():
-    activities, teachers = utils.load_data(test=True)
+    activities, teachers = utils.load_data(test=False)
 
     print("Average class size")
     average_class_size = utils.calculate_average_class_size(activities)
