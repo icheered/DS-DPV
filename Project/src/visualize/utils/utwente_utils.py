@@ -1,7 +1,12 @@
 import pandas as pd
 import os
+import inspect
+import matplotlib.pyplot as plt
+import calendar
+from tqdm import tqdm
 
-intermediate_output = '../../intermediate/utwente/'
+##### DATA HANDLING FUNCTIONS
+
 path = "../../data/utwente/"
 
 def load_data(test=False):
@@ -42,6 +47,16 @@ def load_random_subset(file_path, n_rows_to_load):
     
     return data
 
+intermediate_output = '../../intermediate/utwente/'
+
+def store_dataframe_to_csv(df, var_name):    
+    # create the file path and filename
+    file_path = intermediate_output + var_name + '.csv'
+    
+    # write dataframe to csv
+    df.to_csv(file_path, index=False)
+
+######### CLASS SIZE
 
 def calculate_average_class_size(activities: pd.DataFrame) -> pd.DataFrame:
     # Filter out activities with a size of 0
@@ -136,7 +151,7 @@ def calculate_teacher_workload(activities: pd.DataFrame, teachers: pd.DataFrame)
     teacher_workload['average_hours_worked'] = (teacher_workload['total_duration']/60) / teacher_workload['num_teachers']
 
     # Pivot the data to have years as index, teacher last names as columns, and average number of hours worked as values
-    teacher_workload = teacher_workload.pivot_table(index='year', columns='teacher_lastname', values='average_hours_worked')
+    teacher_workload = teacher_workload.pivot_table(index='year', columns='teacher_lastname', values='average_hours_worked', fill_value=0)
 
     return teacher_workload
 
@@ -233,55 +248,7 @@ def calculate_room_time(activities: pd.DataFrame) -> pd.DataFrame:
     return room_time
 
 
-import matplotlib.pyplot as plt
 
-def calculate_activity_distribution(activities: pd.DataFrame) -> pd.DataFrame:
-    # Extract the year and time from the "time_start" column and add them as new columns
-    activities['year'] = pd.to_datetime(activities['time_start']).dt.year
-    activities['time'] = pd.to_datetime(activities['time_start']).dt.time
-
-    # Group the activities data by year and time
-    grouped_activities = activities.groupby(['year', 'time']).size().reset_index(name='count')
-
-    # Pivot the grouped data to have years as index, times as columns, and counts as values
-    activity_distribution = grouped_activities.pivot_table(index='year', columns='time', values='count', fill_value=0)
-
-    # Normalize the data to percentages
-    activity_distribution = activity_distribution.div(activity_distribution.sum(axis=1), axis=0)
-
-    # Plot the distribution for each year
-    fig, ax = plt.subplots(figsize=(12, 6))
-    ax.set_title('Activity Distribution by Time of Day')
-    ax.set_xlabel('Time')
-    ax.set_ylabel('Percentage')
-    ax.grid(True)
-    for year in activity_distribution.index:
-        ax.plot(activity_distribution.loc[year], label=year)
-    ax.legend()
-    plt.show()
-
-    return activity_distribution
-
-def calculate_hourly_distribution(activities: pd.DataFrame) -> pd.DataFrame:
-    # Extract the year from the "date" column and add it as a new column "year"
-    activities['year'] = pd.to_datetime(activities['date']).dt.year
-
-    # Group the activities data by year and hour of day
-    activities['hour'] = pd.to_datetime(activities['time_start']).dt.hour
-    grouped_activities = activities.groupby(['year', 'hour']).size().reset_index(name='count')
-
-    # Pivot the grouped data to have years as index, hours as columns, and counts as values
-    hourly_distribution = grouped_activities.pivot_table(index='hour', columns='year', values='count', fill_value=0)
-
-    # Calculate the total number of activities per hour for each year
-    hourly_totals = hourly_distribution.sum(axis=0)
-
-    # Normalize the hourly distribution by the total number of activities per year and per minute
-    hourly_distribution = hourly_distribution.divide(hourly_totals, axis=1) / 60
-
-    return hourly_distribution
-
-from tqdm import tqdm
 def calculate_activity_distribution(activities: pd.DataFrame) -> pd.DataFrame:
     activities = activities.dropna(subset=['date'])
     # Extract the year from the "date" column and add it as a new column "year"
@@ -320,7 +287,7 @@ def plot_activity_distribution(activity_distribution: pd.DataFrame):
     plt.grid()
     plt.show()
 
-import calendar
+
 
 def calculate_activity_distribution_by_day(activities: pd.DataFrame) -> pd.DataFrame:
     activities = activities.dropna(subset=['date'])
