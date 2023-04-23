@@ -1,9 +1,11 @@
 import os
 import pandas as pd
 
+from ..utwente import WRITEMODE, TESTMODE
+
 path = "../../data/utwente/"
 
-def load_data(test=False):
+def load_data():
     """
     Load data from parquet files
 
@@ -11,7 +13,7 @@ def load_data(test=False):
         If True, load only a subset of the data to speed things up
     """
 
-    if test:
+    if TESTMODE:
         n_rows_to_load_activities = 1000
         n_rows_to_load_teachers = 1000
         activities = load_random_subset(path+'activities.parquet', n_rows_to_load_activities)
@@ -43,7 +45,9 @@ def load_random_subset(file_path, n_rows_to_load):
 
 intermediate_output = '../../intermediate/utwente/'
 
-def store_dataframe_to_csv(df, var_name):    
+def store_dataframe_to_csv(df, var_name):  
+    if not WRITEMODE:
+        return  
     # create the file path and filename
     file_path = intermediate_output + var_name + '.csv'
     
